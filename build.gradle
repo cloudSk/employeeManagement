@@ -24,7 +24,7 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
-	 compile "org.springframework.boot:spring-boot-starter-web"
-	 compile "org.springframework.boot:spring-boot-starter-actuator"
+	 compile "org.springframework.boot:spring-boot-starter-web:2.0.3.RELEASE"
+	 compile "org.springframework.boot:spring-boot-starter-actuator:2.0.3.RELEASE"
 	 testCompile "org.springframework.boot:spring-boot-starter-test:2.0.5.RELEASE"
 }
