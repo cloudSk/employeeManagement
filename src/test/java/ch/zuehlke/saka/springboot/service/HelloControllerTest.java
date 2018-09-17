@@ -28,4 +28,10 @@ public class HelloControllerTest {
 		   .andExpect(status().isOk())
 		   .andExpect(content().string(equalTo("Hello dear Sir.")));
 	}
+
+	@Test
+	public void getHello_XML() throws Exception {
+		mvc.perform(MockMvcRequestBuilders.get("/hello").accept(MediaType.APPLICATION_XML))
+		   .andExpect(status().isNotAcceptable());
+	}
 }
