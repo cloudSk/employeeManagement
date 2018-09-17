@@ -1,5 +1,6 @@
 package ch.zuehlke.saka.springboot.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,9 +9,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -22,11 +23,19 @@ public class HelloControllerTest {
 	@Autowired
 	private MockMvc mvc;
 
+	@Autowired
+	private ObjectMapper objectMapper;
+
 	@Test
 	public void getHello() throws Exception {
-		mvc.perform(MockMvcRequestBuilders.get("/hello").accept(MediaType.APPLICATION_JSON))
+		HelloTO expectedBody = new HelloTO();
+		expectedBody.setHelloText("Hello dear Sir.");
+
+		ResultActions result = mvc.perform(MockMvcRequestBuilders.get("/hello").accept(MediaType.APPLICATION_JSON));
+
+		result
 		   .andExpect(status().isOk())
-		   .andExpect(content().string(equalTo("Hello dear Sir.")));
+		   .andExpect(content().json(objectMapper.writeValueAsString(expectedBody)));
 	}
 
 	@Test

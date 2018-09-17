@@ -33,9 +33,9 @@ public class HelloControllerIntegrationTest {
 
 	@Test
 	public void getHello() {
-		ResponseEntity<String> response = template.getForEntity(base, String.class);
+		ResponseEntity<HelloTO> response = template.getForEntity(base, HelloTO.class);
 
 		assertThat(response.getStatusCode()).isEqualByComparingTo(HttpStatus.OK);
-		assertThat(response.getBody()).isEqualTo("Hello dear Sir.");
+		assertThat(response.getBody().getHelloText()).isEqualTo("Hello dear Sir.");
 	}
 }
