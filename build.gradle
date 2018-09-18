@@ -28,6 +28,7 @@ String springBootVersion = '2.0.3.RELEASE'
 dependencies {
 	 compile "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
 	 compile "org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}"
+	 compile "org.springframework.boot:spring-boot-starter-hateoas:${springBootVersion}"
 	 // compile "org.springframework.boot:spring-boot-starter-security:${springBootVersion}"
 	 // compile "org.springframework.boot:spring-boot-starter-jetty:${springBootVersion}"
 	 testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
