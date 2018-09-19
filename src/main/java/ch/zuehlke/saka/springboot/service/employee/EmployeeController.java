@@ -3,6 +3,7 @@ package ch.zuehlke.saka.springboot.service.employee;
 import ch.zuehlke.saka.springboot.dataaccess.employee.Employee;
 import ch.zuehlke.saka.springboot.dataaccess.employee.EmployeeRepository;
 import org.springframework.hateoas.Resource;
+import org.springframework.hateoas.Resources;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,10 +23,11 @@ public class EmployeeController {
 	}
 
 	@GetMapping
-	public List<Resource<Employee>> getAll() {
-		return repository.getEmployees().stream()
+	public Resources<Resource<Employee>> getAll() {
+		List<Resource<Employee>> employeeResources = repository.getEmployees().stream()
 				.map(resourceAssembler::toResource)
 				.collect(Collectors.toList());
+		return new Resources<>(employeeResources);
 	}
 
 	@GetMapping("/{id}")
