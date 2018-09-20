@@ -1,0 +1,12 @@
+version: 0.2
+phases:
+  build:
+    commands:
+      - echo Entered the build phase...
+      - ./gradlew clean build
+      - echo Build completed successfully
+artifacts:
+  files:
+    - build/libs/*.jar
+  name: employeeManagement-$(date +%Y-%m-%d)
+  discard-paths: yes
