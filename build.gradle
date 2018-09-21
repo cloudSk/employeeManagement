@@ -13,7 +13,7 @@ apply plugin: 'io.spring.dependency-management'
 
 bootJar {
 	 baseName = 'employee-management-spring-boot'
-	 version =  '1.0'
+	 version =  "$version"
 }
 
 repositories {

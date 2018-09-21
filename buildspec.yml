@@ -8,5 +8,5 @@ phases:
 artifacts:
   files:
     - build/libs/*.jar
-  name: employeeManagement-$(grep "version" src/main/resources/version.properties | cut --delimiter='=' --fields=2)-$(date +%Y-%m-%d)
+  name: employeeManagement-$(grep "version" gradle.properties | cut --delimiter='=' --fields=2)-$(date +%Y-%m-%d)
   discard-paths: yes
