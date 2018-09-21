@@ -3,10 +3,12 @@ phases:
   build:
     commands:
       - echo Entered the build phase...
+      - echo "Version=$(grep "version" gradle.properties)"
+      - echo "Version only=$(grep "version" gradle.properties | cut --delimiter='=' --fields=2)"
       - ./gradlew clean build
       - echo Build completed successfully
 artifacts:
   files:
     - build/libs/*.jar
-  name: employeeManagement-$(grep "version" gradle.properties | cut --delimiter="=" --fields=2)-$(date +%Y-%m-%d)
+  name: employeeManagement-$(grep "version" gradle.properties | cut --delimiter='=' --fields=2)-$(date +%Y-%m-%d)
   discard-paths: yes
